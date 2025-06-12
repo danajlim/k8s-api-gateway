@@ -49,13 +49,13 @@ tasks.named('test') {
 jar {
 	enabled = false //plain jar 생성 비활성화
 }
-tasks.register('getAppName'){
+tasks.register('getAppName') {
 	doLast {
-		println"${rootProject.name}"
+		println "${rootProject.name}"
 	}
 }
 tasks.register('getAppVersion'){
 	doLast {
-		println"${project.version}"
+		println "${project.version}"
 	}
 }

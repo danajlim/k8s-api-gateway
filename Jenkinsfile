@@ -51,11 +51,11 @@ pipeline {
             steps {
                 script {
                     APP_NAME = sh (
-                            script: "gradle -q getAppName",
+                            script: "./gradlew -q getAppName",
                             returnStdout: true
                     ).trim()
                     APP_VERSION = sh (
-                            script: "gradle -q getAppVersion",
+                            script: "./gradlew -q getAppVersion",
                             returnStdout: true
                     ).trim()
 
