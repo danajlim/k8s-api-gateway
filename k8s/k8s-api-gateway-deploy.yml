@@ -14,10 +14,20 @@ spec:
     spec:
       containers:
       - name: k8s-api-gateway
-        image: danajlim/k8s-api-gateway:0.0.1
+        image: danajlim/k8s-api-gateway:0.0.2
         imagePullPolicy: Always
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: dev
         ports:
         - containerPort: 8080
+        volumeMounts:
+          - mountPath: /etc/config
+            name: api-gateway-config-volume
+      volumes:
+        - name: api-gateway-config-volume
+          configMap:
+            name: api-gateway-config
+            items:
+              - key: application-dev.yml
+                path: application-dev.yml
