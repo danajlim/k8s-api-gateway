@@ -3,3 +3,21 @@ spring:
     import:
       - file:/etc/config/application-dev.yml
       - file:/etc/secret/application-secret.yml
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: backend-user
+            predicates:
+              - Path=/api/user/**
+            uri: lb://backend-user
+            filters:
+              - AddAuthenticationHeader
+
+          - id: backend-alim
+            predicates:
+              - Path=/api/alim/**
+            uri: lb://backend-alim
+            filters:
+              - AddAuthenticationHeader
